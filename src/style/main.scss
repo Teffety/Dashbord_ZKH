@@ -1,0 +1,77 @@
+main{
+    padding: 30px 15px;
+    margin: 0;
+    overflow: hidden;
+    position: relative;
+}
+.tab_contact,
+.tab_about{
+    width: 100%;
+    height: 100%;
+    
+    &-list{
+        width: 100%;
+        height: 100%;
+    }
+    &-table{
+        width: 100%;
+        height: 100%;
+        display: grid;
+        grid-template-rows: repeat(auto-fit, 40px);
+        padding: 10px;
+        
+        &-row{
+            display: grid;
+            grid-template-columns: 70px calc(100% - 70px);
+            justify-content: center;
+            align-items:center;
+        }
+        tr{
+            height: 100%;
+            align-items: center;
+        }
+        td:first-child{
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 100%;
+        }
+    }
+}
+.tab_recviz{
+    width: 100%;
+    height: 100%;
+    
+    &-list{
+        width: 100%;
+        height: 100%;
+    }
+    &-table{
+        width: 100%;
+        height: 100%;
+        display: grid;
+        grid-template-rows: repeat(auto-fit, 40px);
+        padding: 10px;
+        
+        &-row{
+            display: grid;
+            grid-template-columns: 70px repeat(2, calc(50% - 35px));
+            justify-content: center;
+            align-items:center;
+        }
+        tr{
+            height: 100%;
+            align-items: center;
+        }
+        td{
+            display: flex;
+            border-bottom: 1px solid rgba(0,0,0,.25);
+            justify-content: center;
+            align-items: center;
+            height: 100%;
+            &:first-child{
+                    justify-content: space-between;
+            }
+        }
+    }
+}
