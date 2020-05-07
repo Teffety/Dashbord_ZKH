@@ -73,60 +73,17 @@ export const  getCorp = ( data = null) => {
            })
     }
 };
-export const  addObject = ( data = null, token = null, whereIs = null) => {
-    console.log(data.get('nameNews'))
+export const  actionObject = ( data = null, token = null) => {
     return async dispatch => {
-        const response = await Axios.post('https://xn--80aefffvbcb7ac2ag5d.xn--p1ai/api/news/', {
+        const response = await Axios.post(`https://xn--80aefffvbcb7ac2ag5d.xn--p1ai/api/${data.get('path')}/`, data,{
             headers:{
                 'Autorization' : token
             },
-            data: {
-                data:data,
-                where: whereIs
-            }
         })
         const res = await response.data;
 
-        dispatch({ type: whereIs.toUpperCase(),
-                    payload: res
-                });
-    }
-};
-export const  removeObject = ( data = null, token = null, whereIs = null) => {
-
-    return async dispatch => {
-        const response = await Axios.delete('https://xn--80aefffvbcb7ac2ag5d.xn--p1ai/api/news/', {
-            headers:{
-                'Autorization' : token
-            },
-            data: {
-                data,
-                where: whereIs
-            }
-        })
-        const res = await response.data;
-
-        dispatch({ type: whereIs.toUpperCase(),
-                    payload: res
-                });
-    }
-};
-export const  updateObject = ( data = null, token = null, whereIs = null) => {
-
-    return async dispatch => {
-        const response = await Axios.put('https://xn--80aefffvbcb7ac2ag5d.xn--p1ai/api/news/', {
-            headers:{
-                'Autorization' : token
-            },
-            data: {
-                data,
-                where: whereIs
-            }
-        })
-        const res = await response.data;
-
-        dispatch({ type: whereIs.toUpperCase(),
-                    payload: res
-                });
+        // dispatch({ type: data.get('path').toUpperCase(),
+        //             payload: res
+        //         });
     }
 };

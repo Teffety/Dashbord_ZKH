@@ -1,8 +1,6 @@
 import React from 'react';
 import { 
-    addObject,
-    removeObject,
-    updateObject
+    actionObject
 } from '../../../store/actions.js'
 import './../../../style/modal.scss'
 import {connect} from 'react-redux'
@@ -13,24 +11,12 @@ function Modal (props){
         event.preventDefault();
         const forma = document.querySelector('.modal_form-form');
         const data = new FormData(forma)
-
-        switch (props.onAction) {
-            case 'add':
-                props.dispatch(addObject(data, props.token, props.whereIs));
-                props.closeModal();
-                break;
-            case 'remove':
-                props.dispatch(removeObject(data, props.token, props.whereIs));
-                props.closeModal();
-                break;
-            case 'update':
-                props.dispatch(updateObject(data, props.token , props.whereIs));
-                props.closeModal();
-                break;
-            default:
-                props.closeModal();
-                break;
+        data.append('path', props.whereIs)
+        data.append('action', props.onAction)
+        if(props.onAction){
+            props.dispatch(actionObject(data, props.token));
         }
+        props.closeModal();
         
     }
     function keyHandle(event){
