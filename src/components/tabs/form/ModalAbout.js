@@ -1,26 +1,31 @@
 import React from 'react';
 import { 
-    actionObject,
-    removeObject
+    actionAboutInfo,
+    addAboutFD,
+    removeAboutFD
 } from '../../../store/actions.js'
 import './../../../style/modal.scss'
 import {connect} from 'react-redux'
 
-function Modal (props){
+function ModalAbout (props){
 
   function  handle(event){
         event.preventDefault();
         const forma = document.querySelector('.modal_form-form');
         const data = new FormData(forma)
         data.append('path', props.whereIs)
+        data.append('type', props.type)
         data.append('action', props.onAction)
         if(props.file) data.append('files', props.file.current.files[0])
-        if(props.select) data.append('select', props.select)
+        if(props.select) data.append('year', props.select)
+        if(props.nameAdd) data.append('name', props.nameAdd)
         if(props.onId) data.append('id', props.onId)
-        if(props.onAction && !props.delete){
-            props.dispatch(actionObject(data, props.token));
-        }else if(props.onAction && props.delete){   
-            props.dispatch(removeObject(data, props.token));
+        if(props.onAction.split('_')[1] === 'info'){
+            props.dispatch(actionAboutInfo(data,props.token))
+        }
+        else if(props.onAction.split('_')[1] !== 'info'){
+            if(props.onAction.split('_')[0] === 'add') props.dispatch(addAboutFD(data, props.token));
+            else if (props.onAction.split('_')[0] === 'remove') props.dispatch(removeAboutFD(data, props.token))
         }
         props.closeModal();
         
@@ -47,4 +52,4 @@ const mapStateToProps = state => {
     }
 }
 
-export default  connect( mapStateToProps)(Modal)
+export default  connect( mapStateToProps,null)(ModalAbout)

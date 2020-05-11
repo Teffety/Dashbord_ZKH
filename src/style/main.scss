@@ -4,11 +4,59 @@ main{
     overflow: hidden;
     position: relative;
 }
-.tab_contact,
-.tab_about{
+
+.tab_corup{
+    &-table{
+        width: 100%;
+        height: 100%;
+        padding: 10px;
+        
+        &-row{
+            display: grid;
+            grid-template-columns: 70px repeat(2, calc(50% - 35px));
+            grid-template-rows:auto;
+            min-height:70px;
+            justify-content: center;
+            align-items:center;
+        }
+        tr{
+            height: 100%;
+        }
+        td{
+            padding: 10px 0px;
+            height: 50px;
+            // height: 100%;
+            overflow: hidden;
+            display: flex;
+            border-bottom: 1px solid rgba(0,0,0,.25);
+            align-items: flex-start;
+            justify-content: flex-start;
+            &:first-child{
+                justify-content: center;
+                align-items: center;                    
+            }
+            a{
+                text-decoration: none;
+                outline: none;
+                color:var(--grey-color);
+                &:active,
+                &:visited
+                {
+                    text-decoration: none;
+                    outline: none;
+                    color:var(--grey-color);
+                }
+                &:hover{
+                    color:black;
+                }
+            }
+        }
+    }
+}
+.tab_contact{
     width: 100%;
     height: 100%;
-    
+    overflow:auto;
     &-list{
         width: 100%;
         height: 100%;
@@ -29,12 +77,22 @@ main{
         tr{
             height: 100%;
             align-items: center;
+            
+        }
+        
+        td{
+            overflow: hidden;
+            align-items: flex-start;
+            justify-content: flex-start;
         }
         td:first-child{
             display: flex;
             justify-content: space-between;
-            align-items: center;
             height: 100%;
+
+        }
+        td span {
+            padding: 0px 15px;
         }
     }
 }
@@ -46,6 +104,46 @@ main{
         width: 100%;
         height: 100%;
     }
+    label{
+        border: none;
+        position: relative;
+        display: flex;
+        flex-flow: column;
+        justify-content: center;
+        align-items: center;
+    }
+    select{
+        position: relative;
+        width: calc(100% - 40px);
+        border:none;
+        padding: 10px;
+        margin-left: 20px;
+    }
+    &-modal{
+        height: 100%;
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        border: none;
+        & input{
+            border: none;
+            background-color: transparent;
+            border-bottom: 1px solid var(--grey-color);
+            cursor: pointer;
+            color: white;
+            position: relative;
+            margin-right: 25px;
+            &:first-child{
+                margin-right:0px;
+                margin-left: 25px;
+            }
+            &:focus{
+                text-decoration: none;
+                outline: none;
+            }
+        }
+    }
     &-table{
         width: 100%;
         height: 100%;
@@ -56,21 +154,37 @@ main{
         &-row{
             display: grid;
             grid-template-columns: 70px repeat(2, calc(50% - 35px));
+            grid-template-rows:auto;
+            min-height:70px;
             justify-content: center;
             align-items:center;
         }
         tr{
             height: 100%;
-            align-items: center;
         }
         td{
             display: flex;
             border-bottom: 1px solid rgba(0,0,0,.25);
-            justify-content: center;
             align-items: center;
+            justify-content: center;
             height: 100%;
             &:first-child{
                     justify-content: space-between;
+            }
+            a{
+                text-decoration: none;
+                outline: none;
+                color:var(--grey-color);
+                &:active,
+                &:visited
+                {
+                    text-decoration: none;
+                    outline: none;
+                    color:var(--grey-color);
+                }
+                &:hover{
+                    color:black;
+                }
             }
         }
     }

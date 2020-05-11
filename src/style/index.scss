@@ -39,6 +39,13 @@ html, body, #root{
             margin:10px 0px;
             border:none;
             cursor: pointer;
+            &:-internal-autofill-selected{
+                background-color: none !important;
+            }
+            &:focus{
+                text-decoration: none;
+                outline: none;
+            }
             &[type=text],
             &[type=password]{
                 border-bottom: 1px inset var(--lighter-main);
@@ -55,5 +62,25 @@ html, body, #root{
                 }
             }
         }
+    }
+}
+.error_block{
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    top: 20px;
+    padding: 5px 15px;
+    background-color: rgb(255, 255, 255);
+    border: 1px solid rgb(255, 64, 64);
+    border-radius: 3px;
+    & i {
+        border-radius: 5px;
+        position: absolute;
+        top: -15px;
+        right: 5px;
+        color: white;
+        padding: 3px;
+        background-color: #ff4040;
     }
 }
